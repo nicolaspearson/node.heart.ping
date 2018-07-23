@@ -1,6 +1,6 @@
 {
   "name": "heart-ping",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A simple light-weight Typescript module for pinging HTTP services at set intervals to provide a heartbeat.",
   "main": "./src/index.ts",
   "scripts": {
