@@ -1,5 +1,5 @@
-import http = require('http');
-import https = require('https');
+import http from 'http';
+import https from 'https';
 
 export default class HeartPing {
 	private DEFAULT_TIMEOUT: number = 5000;
