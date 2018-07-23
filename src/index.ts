@@ -131,7 +131,7 @@ export default class HeartPing {
 	 * @description Stops the heartbeat if it is beating, and resets all properties to the original default values.
 	 */
 	public reset = () => {
-		stop();
+		this.stop();
 		this.interval = this.DEFAULT_INTERVAL;
 		this.timeout = this.DEFAULT_TIMEOUT;
 		this.timeoutFn = () => {

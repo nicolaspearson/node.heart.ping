@@ -2,7 +2,7 @@
   "name": "heart-ping",
   "version": "1.0.1",
   "description": "A simple light-weight Typescript module for pinging HTTP services at set intervals to provide a heartbeat.",
-  "main": "./src/index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "build": "npm run tslint && rm -rf ./dist && npm run build:ts",
     "build:ts": "tsc --rootDir ./src/",
