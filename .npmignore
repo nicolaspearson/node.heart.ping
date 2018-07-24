@@ -6,5 +6,5 @@ test/
 tsconfig.json
 *.tgz
 *.log
-!types/src/index.d.ts
+!index.d.ts
 !src/index.js
