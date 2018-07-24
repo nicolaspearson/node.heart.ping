@@ -14,7 +14,7 @@ export default class HeartPing {
 		// User defined
 	};
 
-	public HeartPing() {
+	constructor() {
 		// Empty constructor
 	}
 
@@ -23,7 +23,9 @@ export default class HeartPing {
 	 * @function getBeatInterval
 	 * @description Returns the current heartbeat interval
 	 */
-	public getBeatInterval = () => this.interval;
+	public getBeatInterval(): number {
+		return this.interval;
+	}
 
 	/**
 	 * @public
@@ -31,16 +33,18 @@ export default class HeartPing {
 	 * @param number newInterval The new interval period
 	 * @description Sets the current heartbeat interval to the given one
 	 */
-	public setBeatInterval = (newInterval: number) => {
+	public setBeatInterval(newInterval: number): void {
 		this.interval = newInterval;
-	};
+	}
 
 	/**
 	 * @public
 	 * @function getBeatTimeout
 	 * @description Returns the current heartbeat timeout period
 	 */
-	public getBeatTimeout = () => this.timeout;
+	public getBeatTimeout(): number {
+		return this.timeout;
+	}
 
 	/**
 	 * @public
@@ -50,20 +54,22 @@ export default class HeartPing {
 	 * Setting the timeout this way will immediately affect the <code>hasTimedOut</code> method without the need to restart the heartbeat object.
 	 * Invoking this method <b>does</b> restart the timer controlling the <code>onTimeout</code> event.
 	 */
-	public setBeatTimeout = (newTimeout: number) => {
+	public setBeatTimeout(newTimeout: number): void {
 		this.timeout = newTimeout;
 		if (this.timeoutTimer !== undefined) {
 			clearTimeout(this.timeoutTimer);
 		}
 		this.timeoutTimer = setTimeout(this.timeoutFn, this.timeout);
-	};
+	}
 
 	/**
 	 * @public
 	 * @function hasTimedOut
 	 * @description Used to detected if a heartbeat has timed out
 	 */
-	public hasTimedOut = () => Date.now() - this.lastHeartbeatTime > this.timeout;
+	public hasTimedOut(): boolean {
+		return Date.now() - this.lastHeartbeatTime > this.timeout;
+	}
 
 	/**
 	 * @public
@@ -71,9 +77,9 @@ export default class HeartPing {
 	 * @param function fn The function to be executed when a timeout occurs.
 	 * @description Runs the given function when the heartbeat detects a timeout.
 	 */
-	public setOnTimeout = (fn: () => void) => {
+	public setOnTimeout(fn: () => void): void {
 		this.timeoutFn = fn;
-	};
+	}
 
 	/**
 	 * @public
@@ -82,14 +88,16 @@ export default class HeartPing {
 	 * @description Returns <code>true</code> if the heartbeat is active, <code>false</code> otherwise.
 	 * A heartbeat is considered active if it was started and has not been stopped yet.
 	 */
-	public isBeating = () => this.timer !== undefined;
+	public isBeating(): boolean {
+		return this.timer !== undefined;
+	}
 
 	/**
 	 * @public
 	 * @function stop
 	 * @description Stops the heartbeat object and clears all internal states
 	 */
-	public stop = () => {
+	public stop(): void {
 		this.lastHeartbeatTime = -1;
 		if (this.timer !== undefined) {
 			clearInterval(this.timer);
@@ -99,7 +107,7 @@ export default class HeartPing {
 			clearTimeout(this.timeoutTimer);
 		}
 		this.timeoutTimer = undefined;
-	};
+	}
 
 	/**
 	 * @public
@@ -110,12 +118,12 @@ export default class HeartPing {
 	 * @param function failedFn The function to be executed on a failed ping
 	 * @description Starts the heartbeat object, executing the a ping function at the defined interval
 	 */
-	public start = (
+	public start(
 		url: string,
 		port: number,
 		successFn: (time: number) => void,
 		failedFn: () => void
-	) => {
+	): void {
 		this.lastHeartbeatTime = Date.now();
 		this.timer = setInterval(() => {
 			this.timeoutTimer = setTimeout(this.timeoutFn, this.timeout);
@@ -123,21 +131,21 @@ export default class HeartPing {
 				.then(successFn)
 				.catch(failedFn);
 		}, this.interval);
-	};
+	}
 
 	/**
 	 * @public
 	 * @function reset
 	 * @description Stops the heartbeat if it is beating, and resets all properties to the original default values.
 	 */
-	public reset = () => {
+	public reset(): void {
 		this.stop();
 		this.interval = this.DEFAULT_INTERVAL;
 		this.timeout = this.DEFAULT_TIMEOUT;
 		this.timeoutFn = () => {
 			// Reset timeout function
 		};
-	};
+	}
 
 	/**
 	 * @public
@@ -146,7 +154,7 @@ export default class HeartPing {
 	 * @param port Optional: The port of the destination url
 	 * @returns A promise that returns the round trip time in milliseconds. Returns -1 if an error occurred.
 	 */
-	public ping(url: string, port?: number) {
+	public ping(url: string, port?: number): Promise<number> {
 		const promise = new Promise<number>((resolve, reject) => {
 			const useHttps = url.indexOf('https') === 0;
 			const mod = useHttps ? https.request : http.request;
