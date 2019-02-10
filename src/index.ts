@@ -155,7 +155,7 @@ export default class HeartPing {
 	 * @returns A promise that returns the round trip time in milliseconds. Returns -1 if an error occurred.
 	 */
 	public ping(url: string, port?: number): Promise<number> {
-		const promise = new Promise<number>((resolve, reject) => {
+		return new Promise<number>((resolve, reject) => {
 			const useHttps = url.indexOf('https') === 0;
 			const mod = useHttps ? https.request : http.request;
 			const outPort = port || (useHttps ? 443 : 80);
@@ -184,6 +184,5 @@ export default class HeartPing {
 			pingRequest.write('');
 			pingRequest.end();
 		});
-		return promise;
 	}
 }
