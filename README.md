@@ -3,6 +3,7 @@
 [![License][license-image]][license-url]
 [![Current Version](https://img.shields.io/npm/v/heart-ping.svg)](https://www.npmjs.com/package/heart-ping)
 [![npm](https://img.shields.io/npm/dw/heart-ping.svg)](https://www.npmjs.com/package/heart-ping)
+![](https://img.shields.io/bundlephobia/min/heart-ping.svg?style=flat)
 
 [license-url]: https://opensource.org/licenses/MIT
 [license-image]: https://img.shields.io/npm/l/make-coverage-badge.svg
