@@ -1,10 +1,20 @@
-
+# Ignore
 *.ts
 *.map
 .vscode/
 test/
+coverage/
 tsconfig.json
 *.tgz
 *.log
+*.pdf
+*.png
+.editorconfig
+.prettierrc
+tslint.json
+test
+*.config.js
+
+# Keep
 !index.d.ts
-!src/index.js
+!src/**/*.js
