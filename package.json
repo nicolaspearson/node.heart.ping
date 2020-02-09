@@ -24,7 +24,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "~12.12.26",
-    "npm-check-updates": "~3.2.2",
+    "npm-check-updates": "~4.0.1",
     "ts-helpers": "~1.1.2",
     "ts-node": "~8.5.4",
     "tslint": "~5.20.1",
