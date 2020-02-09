@@ -13,6 +13,7 @@ tsconfig.json
 .prettierrc
 tslint.json
 test
+renovate.json
 *.config.js
 
 # Keep
