@@ -13,7 +13,7 @@ A simple light-weight Typescript module for pinging HTTP services at set interva
 ### Installation
 
 ```
-npm install heart-ping --save
+yarn add heart-ping
 ```
 
 ### Usage
