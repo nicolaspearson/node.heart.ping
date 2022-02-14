@@ -10,6 +10,10 @@
 
 A simple light-weight Typescript module for pinging HTTP services at set intervals to provide a heartbeat.
 
+## Notice (Deprecated)
+
+The source code for this library has been moved to: [Kalos](https://github.com/nicolaspearson/kalos/tree/main/packages/heart-ping).
+
 ### Installation
 
 ```
